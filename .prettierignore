@@ -1,0 +1,8 @@
+# Common
+dist/
+build/
+pnpm-lock.yaml
+package-lock.json
+
+# Angular
+.angular/
