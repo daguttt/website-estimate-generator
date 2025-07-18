@@ -14,7 +14,12 @@
     "module": "preserve",
     "paths": {
       "@/*": ["./src/app/*"],
-      "@spartan-ng/helm/button": ["./libs/ui/ui-button-helm/src/index.ts"]
+      "@/env": ["./src/environments/index.ts"],
+      "@spartan-ng/helm/button": ["./libs/ui/ui-button-helm/src/index.ts"],
+      "@spartan-ng/helm/input": ["./libs/ui/ui-input-helm/src/index.ts"],
+      "@spartan-ng/helm/form-field": [
+        "./libs/ui/ui-form-field-helm/src/index.ts"
+      ]
     }
   },
   "angularCompilerOptions": {

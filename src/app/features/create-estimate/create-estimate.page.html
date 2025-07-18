@@ -1,1 +1,90 @@
-<p>create-estimate works!</p>
+<main class="container max-w-lg mx-auto px-4 pt-20">
+  <h1 class="text-2xl font-bold">Website Estimate Generator</h1>
+  <p>Fill out the form below to get a quote for your website.</p>
+  <form
+    class="pt-4 space-y-4"
+    [formGroup]="formStore.form"
+    (ngSubmit)="formStore.formSubmitted$.next(formStore.form.value)"
+  >
+    <!-- Brand name -->
+    <hlm-form-field>
+      <label for="brand-name">Brand name</label>
+      <input
+        id="brand-name"
+        hlmInput
+        type="text"
+        placeholder="My company name"
+        formControlName="brandName"
+      />
+      <hlm-hint>Your company's name</hlm-hint>
+    </hlm-form-field>
+
+    <!-- Brand primary color -->
+    <hlm-form-field>
+      <label for="brand-primary-color">Brand primary color</label>
+      <input
+        id="brand-primary-color"
+        hlmInput
+        type="text"
+        placeholder="#6F4E37"
+        formControlName="brandPrimaryColor"
+      />
+      <hlm-hint>The primary color of your brand/company in hex format</hlm-hint>
+    </hlm-form-field>
+
+    <!-- Description -->
+    <hlm-form-field>
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        class="min-h-48 placeholder:italic"
+        hlmInput
+        placeholder="I need a modern, responsive website for my coffee shop called 'Morning Brew'. The website should include:&#10;- Homepage with hero section and featured products&#10;- Menu page with categories and items&#10;- About Us page with our story and team&#10;- Contact page with a contact form and location map&#10;&#10;Key features needed:&#10;- Online ordering system&#10;- Mobile-responsive design&#10;- Photo gallery&#10;- Social media integration&#10;- Blog section for coffee tips&#10;&#10;Brand colors: Brown (#6F4E37) and cream (#F5F5DC)&#10;Inspiration: https://example-coffee.com, https://another-coffee-site.com"
+        formControlName="description"
+      ></textarea>
+      <hlm-hint> Describe the features you want for your website </hlm-hint>
+    </hlm-form-field>
+
+    <!-- Number of pages -->
+    <hlm-form-field>
+      <label for="number-of-pages">Number of pages</label>
+      <select id="number-of-pages" hlmInput formControlName="numberOfPages">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <hlm-hint>Number of pages of your website</hlm-hint>
+    </hlm-form-field>
+
+    <!-- Number of revisions -->
+    <hlm-form-field>
+      <label for="number-of-revisions">Number of revisions</label>
+      <select
+        id="number-of-revisions"
+        hlmInput
+        formControlName="numberOfRevisions"
+      >
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <hlm-hint>Number of revisions</hlm-hint>
+    </hlm-form-field>
+
+    <!-- Delivery time -->
+    <hlm-form-field>
+      <label for="delivery-time">Delivery time</label>
+      <select id="delivery-time" hlmInput formControlName="deliveryTime">
+        <option value="2d-3d" selected>2-3 days</option>
+        <option value="3d-5d">3-5 days</option>
+      </select>
+      <hlm-hint>Expected delivery time</hlm-hint>
+    </hlm-form-field>
+
+    <!-- Submit button -->
+    <button type="submit" hlmBtn [disabled]="formStore.form.invalid">
+      Submit
+    </button>
+  </form>
+</main>
