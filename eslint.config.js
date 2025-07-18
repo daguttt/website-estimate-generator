@@ -70,6 +70,7 @@ module.exports = tseslint.config(
       "@angular-eslint/use-lifecycle-interface": "error",
       // Rules: https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/README.md
     },
+    ignores: ["libs/ui/**/*"],
   },
   {
     files: ["**/*.html"],
