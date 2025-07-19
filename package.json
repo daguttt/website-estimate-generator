@@ -1,6 +1,7 @@
 {
   "name": "website-estimate-generator",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration development",
@@ -33,10 +34,13 @@
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.1",
+    "@hono/node-server": "1.16.0",
     "@spartan-ng/brain": "0.0.1-alpha.487",
+    "@vercel/node": "5.3.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "express": "^5.1.0",
+    "hono": "4.8.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
