@@ -1,9 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { FormBuilder, Validators, ValidatorFn } from '@angular/forms';
+import { FormBuilder, ValidatorFn, Validators } from '@angular/forms';
 
-import { Subject } from 'rxjs';
+import { Subject, switchMap } from 'rxjs';
 
 import { environment } from '@/env';
+
+import { CreateEstimate } from './create-estimate.model';
+import { EstimateGeneratorClient } from './estimate-generator-client.service';
 
 function validateEnum(enumValues: string[]): ValidatorFn {
   return (control) => {
@@ -16,6 +19,7 @@ function validateEnum(enumValues: string[]): ValidatorFn {
 @Injectable()
 export class EstimateFormStore {
   private readonly fb = inject(FormBuilder);
+  private readonly estimateGeneratorClient = inject(EstimateGeneratorClient);
 
   public readonly form = this.fb.nonNullable.group(
     {
@@ -49,16 +53,24 @@ export class EstimateFormStore {
         brandName: 'My company name',
         brandPrimaryColor: '#6F4E37',
         description:
-          'I need a modern, responsive website for my coffee shop called "Morning Brew"',
+          'I need a modern, responsive website for my coffee shop called Morning Brew',
         numberOfPages: '2',
         numberOfRevisions: '2',
         deliveryTime: '2d-3d',
       });
     }
 
-    this.formSubmitted$.subscribe((value) => {
-      console.log(value);
-    });
+    this.formSubmitted$
+      .pipe(
+        switchMap((value) =>
+          this.estimateGeneratorClient.generateEstimate(
+            value as CreateEstimate,
+          ),
+        ),
+      )
+      .subscribe((response) => {
+        console.log({ response });
+      });
 
     // this.form.events.subscribe((event) => {
     //   console.dir(event);

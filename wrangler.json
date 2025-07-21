@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "website-estimate-generator",
+  "main": "api/index.ts",
+  "compatibility_date": "2025-07-20",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist/website-estimate-generator/browser"
+  }
+}

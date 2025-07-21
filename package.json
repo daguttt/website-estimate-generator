@@ -4,14 +4,16 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration development",
+    "start:web": "ng serve --configuration development",
+    "start:api": "wrangler dev --local",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:website-estimate-generator": "node dist/website-estimate-generator/server/server.mjs",
     "lint": "ng lint",
     "format:write": "prettier --write \"**/*.{ts,html,js,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,html,js,mdx}\" --cache"
+    "format:check": "prettier --check \"**/*.{ts,html,js,mdx}\" --cache",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "prettier": {
     "overrides": [
@@ -34,15 +36,16 @@
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.1",
-    "@hono/node-server": "1.16.0",
+    "@hono/arktype-validator": "2.0.1",
     "@spartan-ng/brain": "0.0.1-alpha.487",
-    "@vercel/node": "5.3.6",
+    "arktype": "2.1.20",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "express": "^5.1.0",
     "hono": "4.8.5",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "wrangler": "4.25.0"
   },
   "devDependencies": {
     "@angular-eslint/builder": "20.1.1",
@@ -57,7 +60,7 @@
     "@types/node": "^20.17.19",
     "angular-eslint": "20.1.1",
     "eslint": "^9.29.0",
-    "eslint-config-prettier": "10.1.7",
+    "eslint-config-prettier": "10.1.1",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
